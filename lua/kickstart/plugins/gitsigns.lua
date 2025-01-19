@@ -5,6 +5,7 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
@@ -48,6 +49,7 @@ return {
         map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
         map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
         map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git [b]lame line' })
+        map("n", "<leader>hB", gitsigns.toggle_current_line_blame, { desc = "Toggle line [B]lame" })
         map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
         map('n', '<leader>hD', function()
           gitsigns.diffthis '@'
@@ -55,6 +57,12 @@ return {
         -- Toggles
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
         map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
+        map("n", "<leader>hD", function()
+          gs.diffthis("~")
+        end, { desc = '[D]iff this ~' })
+
+        -- Text object
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = 'G[i]tsigns select [h]unk' })
       end,
     },
   },

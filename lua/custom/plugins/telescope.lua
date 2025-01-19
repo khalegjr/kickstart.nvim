@@ -21,6 +21,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      "folke/todo-comments.nvim",
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -41,6 +42,17 @@ return { -- Fuzzy Finder (files, lsp, etc)
       -- This opens a window that shows you all of the keymaps for the current
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
+
+      local trouble = require("trouble")
+      local trouble_telescope = require("trouble.sources.telescope")
+      local transform_mod = require("telescope.actions.mt").transform_mod
+
+      -- or create your custom action
+      local custom_actions = transform_mod({
+        open_trouble_qflist = function(prompt_bufnr)
+          trouble.toggle("quickfix")
+        end,
+      })
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
