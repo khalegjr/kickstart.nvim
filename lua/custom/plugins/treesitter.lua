@@ -9,7 +9,7 @@ return { -- Highlight, edit, and navigate code
     },
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'java', 'angular', 'scss', 'dockerfile', 'git_config', 'gitcommit', 'git_rebase', 'gitignore', 'gitattributes', "go", "gomod", "gowork", "gosum", 'json5', "ninja", "rst", 'rust', 'ron', 'sql', 'json',
-      'javascript', 'typescript', 'tsx', 'yaml', 'html', 'css', 'prisma', 'svelte', 'graphql' },
+      'javascript', 'typescript', 'tsx', 'yaml', 'html', 'css', 'prisma', 'svelte', 'graphql', "terraform", "hcl" },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
